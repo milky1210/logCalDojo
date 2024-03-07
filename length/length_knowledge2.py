@@ -23,8 +23,8 @@ for key in length.keys():
     quizzes.append(quiz)
 
 # JSONファイルに保存
-with open('length_easy_quizzes.json', 'w') as f:
+with open('length_knowledge2.json', 'w') as f:
     json.dump(quizzes, f, ensure_ascii=False, indent=4)
 
 # ファイルのパスを表示
-print("length_easy_quizzes.json")
+print("length_knowledge2.json")

@@ -20,4 +20,5 @@
 - 時間(s)
 - 速度(m/s)
 - prefix
+- number
 - 確率
