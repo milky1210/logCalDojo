@@ -1,7 +1,8 @@
 import json
 import math
 
-length = {
+dict = {
+    "Å": 1e-10,
     "nm": 1e-9,       # ナノメートル
     "um": 1e-6,       # マイクロメートル
     "mm": 1e-3,       # ミリメートル
@@ -18,13 +19,13 @@ length = {
 
 # クイズデータのリスト
 quizzes = []
-for key in length.keys():
-    if length[key]>1:
+for key in dict.keys():
+    if dict[key]>1:
         quiz = {"question": f"1{key}は何mですか？",
-            "answer": math.log10(length[key])}
+            "answer": math.log10(dict[key])}
     else:
         quiz = {"question": f"1mは何{key}ですか？",
-            "answer": -math.log10(length[key])}
+            "answer": -math.log10(dict[key])}
     quizzes.append(quiz)
 
 # JSONファイルに保存
