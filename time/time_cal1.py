@@ -55,7 +55,7 @@ def log_to_japanese_string(val):
 
 
 time_dict = {
-    '年' : 7.4988,
+    '年' : 7.4988066,
     '日' : 4.9365,
     '時間' : 3.5563,
     '分' : 1.77815,
@@ -85,10 +85,10 @@ for _ in range(500):
 
 
 # quizzes.jsonとして保存
-with open('time.json', 'w') as file:
+with open('time_cal1.json', 'w') as file:
     json.dump(quizzes, file, indent=4, ensure_ascii=False)
 
-print("quizzes.jsonを保存しました。")
+print("time_cal1.jsonを保存しました。")
 
 
 
