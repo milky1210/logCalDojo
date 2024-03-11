@@ -28,6 +28,17 @@ for key in dict.keys():
             "answer": -math.log10(dict[key])}
     quizzes.append(quiz)
 
+# tan系を暗記
+for theta in [1,2,3,5,10,20,30]:
+    quiz = {
+        "question": f"tan{theta}は何分の一ですか？",
+            "answer": math.log10(1/math.tan(math.radians(theta)))
+    }
+    quizzes.append(quiz)
+
+
+
+
 # JSONファイルに保存
 with open('length_knowledge1.json', 'w') as f:
     json.dump(quizzes, f, ensure_ascii=False, indent=4)
