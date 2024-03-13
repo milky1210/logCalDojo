@@ -10,7 +10,7 @@ def coin_toss(n):
     return txt, ans
 
 def dice_roll(n):
-    txt = f"サイコロを{n}回行ってすべて1が出る"
+    txt = f"サイコロを{n}回振ってすべて1が出る"
     ans = n * math.log10(6)
     return txt, ans
 
