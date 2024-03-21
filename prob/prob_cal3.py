@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 
 def exam(r1,n,r2):
-    txt = f"{n}問の試験で、正答率{int(r1*100)}%以上で、合格のとき、正答率{int(r2*100)}%の生徒が合格する"
+    txt = f"{n}問の試験で、正答率{round(r1*100)}%以上で、合格のとき、正答率{round(r2*100)}%の生徒が合格する"
     min_correct_answers = int(r1 * n)
     prob_passing = 1 - binom.cdf(min_correct_answers - 1, n, r2)
     try:
