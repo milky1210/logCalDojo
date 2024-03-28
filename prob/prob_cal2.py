@@ -9,7 +9,8 @@ from tqdm import tqdm
 def coin_toss(n,m):
     txt = f"コイントスを{n}回行って{m}回以上表が出る"
     ans = -math.log10(1-binom.cdf(m-1,n,0.5))
-    return txt, ans
+    exp = f"標準偏差が0.5÷√{n}={0.5/math.sqrt(n):.3f}なので、{(m/n-0.5)/(0.5/math.sqrt(n)):.3f}σ以上と見積もって、正規分布を仮定するとある程度推論できます。"
+    return txt, ans, exp
 
 
 def make_dice_roll_dp(n):
@@ -33,7 +34,8 @@ def dice_roll(n,m,dp):
     # 確率を計算
     txt = f"サイコロを{n}回振って、合計が{m}以上になる"
     ans = - math.log10(total_probability)
-    return txt, ans
+    exp = f"標準偏差が2.917÷√{n}={2.917/math.sqrt(n):.3f}なので、{(m/n-3.5)/(2.917/math.sqrt(n)):.3f}σ以上と見積もって、正規分布を仮定するとある程度推論できます。"
+    return txt, ans, exp
 
 
 
@@ -43,15 +45,17 @@ quizzes = []
 # コイントスの問題を追加
 for i in range(20):
     for j in range(i):
-        txt, ans = coin_toss(i+1,j+1)
+        txt, ans, exp = coin_toss(i+1,j+1)
         quizzes.append({"question": f"{txt}確率は何分の１ですか？",
-            "answer": ans})
+            "answer": ans,
+            "explanation": exp
+            })
     
 # ダイスロールの問題を追加
 dp = make_dice_roll_dp(500)
 for i in [3,5,10,20,100,200,300,500]:
     for r in range(35,60,5):
-        txt, ans = dice_roll(i,int(i*r/10),dp)
+        txt, ans, exp = dice_roll(i,int(i*r/10),dp)
         quizzes.append({"question": f"{txt}確率は何分の１ですか？",
             "answer": ans})
 
