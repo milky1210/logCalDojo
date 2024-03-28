@@ -1,5 +1,23 @@
 import json
 import math
+def log_to_prefixed_string(val):
+    # 大きな値の接頭語
+    prefixes_big = {
+        20: '垓',
+        16: '京',
+        12: '兆',
+        8: '億',
+        4: '万',
+        0: ''
+    }
+    for exp, prefix in prefixes_big.items():
+        if val >= exp:
+            number = 10**(val - exp)
+            if number<10:
+                return f"{number:.2g}{prefix}"
+            else:
+                return f"{int(number)}{prefix}"
+    return f"{int(10**(val - exp))}"
 
 dict = {
     "年末ジャンボの一等が一発で当たる":  2000 * 10000,
@@ -21,8 +39,11 @@ dict = {
 # クイズデータのリスト
 quizzes = []
 for key in dict.keys():
+    ans = math.log10(dict[key])
     quiz = {"question": f"{key}確率は何分の１ですか？",
-        "answer": math.log10(dict[key])}
+        "answer": ans,
+        "explanation": f"{key}確率は約{log_to_prefixed_string(ans)}分の１です。"
+        }
     quizzes.append(quiz)
 
 # JSONファイルに保存
