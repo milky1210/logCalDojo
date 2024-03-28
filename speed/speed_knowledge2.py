@@ -19,17 +19,39 @@ speeds = {
     "第三宇宙速度": 16694.4444,
     "光速": 299792458
 }
+def log_to_prefixed_string(val, mode=0):
+    # 大きな値の接頭語
+    prefixes_big = {
+        19: '京k',
+        15: '兆k',
+        11: '億k',
+        7: '万k',
+        3: 'k',
+        0: ''
+    }
+    for exp, prefix in prefixes_big.items():
+        if val >= exp:
+            number = 10**(val - exp)
+            if number<10:
+                return f"{number:.2g}{prefix}"
+            else:
+                return f"{int(number)}{prefix}"
+    return f"{int(10**(val - exp))}"
+
+
+
 
 # クイズデータのリスト
 quizzes = []
 for key in speeds.keys():
     quiz = {"question": f"{key}は何m/sですか？",
-            "answer": math.log10(speeds[key])}
+            "answer": math.log10(speeds[key]),
+            "explanation": f"{key}は{log_to_prefixed_string(math.log10(speeds[key]))}m/sです。"}
     quizzes.append(quiz)
 
 # JSONファイルに保存
-with open('speed_easy_quizzes.json', 'w') as f:
+with open('speed_knowledge2.json', 'w') as f:
     json.dump(quizzes, f, ensure_ascii=False, indent=4)
 
 # ファイルのパスを表示
-print("speed_easy_quizzes.json")
+print("speed_knowledge2.json")
