@@ -59,7 +59,7 @@ for key in dict1.keys():
     ans = math.log10(dict1[key]) + math.log10(60 * 60 * 24 * 365)
     quiz = {"question": f"{key}は何秒前ですか？",
         "answer": ans,
-        "explanation": f"{key}は{log_to_prefixed_string(ans)}前です"}
+        "explanation": f"{key}は{log_to_prefixed_string(ans)}前です。"}
     quizzes.append(quiz)
 
 
