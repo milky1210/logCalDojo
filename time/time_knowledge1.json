@@ -1,30 +1,37 @@
 [
     {
         "question": "1秒は何nsですか？",
-        "answer": 9.0
+        "answer": 9.0,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1秒は何usですか？",
-        "answer": 6.0
+        "answer": 6.0,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1秒は何msですか？",
-        "answer": 3.0
+        "answer": 3.0,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1分は何秒ですか？",
-        "answer": 1.7781512503836436
+        "answer": 1.7781512503836436,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1時間は何秒ですか？",
-        "answer": 3.5563025007672873
+        "answer": 3.5563025007672873,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1日は何秒ですか？",
-        "answer": 4.936513742478893
+        "answer": 4.936513742478893,
+        "explanation": "頑張って覚えましょう"
     },
     {
         "question": "1年は何秒ですか？",
-        "answer": 7.498806606935368
+        "answer": 7.498806606935368,
+        "explanation": "頑張って覚えましょう"
     }
 ]

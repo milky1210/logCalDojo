@@ -81,7 +81,15 @@ for _ in range(500):
                 continue
             question = f" {log_to_japanese_string(que)}{key1}は何{key2}ですか？"
             answer = ans
-            quizzes.append({"question": question, "answer": answer})
+            sign1 = "+" if time_dict[key1] > 0 else "-"
+            sign2 = "-" if time_dict[key2] > 0 else "+"
+            if key2 == "秒":
+                exp = f"{que:.2g}{sign1}{time_dict[key1]:.3g}でだいたい計算できます。"
+            elif key1 == "秒":
+                exp = f"{que:.2g}{sign2}{time_dict[key2]:.3g}でだいたい計算できます。"
+            else:
+                exp = f"{que:.2g}{sign1}{time_dict[key1]:.3g}{sign2}{time_dict[key2]:.3g}でだいたい計算できます。"
+            quizzes.append({"question": question, "answer": answer, "explanation": exp})
 
 
 # quizzes.jsonとして保存

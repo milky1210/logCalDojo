@@ -17,10 +17,12 @@ quizzes = []
 for key in dict.keys():
     if dict[key]>1:
         quiz = {"question": f"1{key}は何秒ですか？",
-            "answer": math.log10(dict[key])}
+            "answer": math.log10(dict[key]),
+            "explanation": f"頑張って覚えましょう"}
     else:
         quiz = {"question": f"1秒は何{key}ですか？",
-            "answer": -math.log10(dict[key])}
+            "answer": -math.log10(dict[key]),
+            "explanation": f"頑張って覚えましょう"}
     quizzes.append(quiz)
 
 # JSONファイルに保存
