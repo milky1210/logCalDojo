@@ -3,7 +3,11 @@ import math
 def log_to_prefixed_string(val):
     # 大きな値の接頭語
     prefixes_big = {
+        18: '兆k',
+        14: '億k',
+        10: '万k',
         6: 'k',
+        4: '万',
         0: ''
     }
     
@@ -22,12 +26,12 @@ def log_to_prefixed_string(val):
 
     for exp, prefix in prefixes_big.items():
         if val >= exp:
-            return f"{format(10**(val - exp), '.3g')}{prefix}"
+            return f"{int(10**(val - exp))}{prefix}"
     
     for exp, prefix in prefixes_small.items():
         if val < 0 and val >= exp:
-            return f"{format(10**(val - exp), '.3g')}{prefix}"
-    return f"{format(10**(val - exp), '.3g')}"
+            return f"{int(10**(val - exp))}{prefix}"
+    return f"{int(10**(val - exp))}"
 file_path = 'set2.txt'
 
 # ファイルを開いて内容を読み込む
@@ -48,7 +52,7 @@ for line in lines:
         except ValueError:
             # 面積が数値でない場合はスキップ
             continue
-        quiz_list.append({"question": f"{name}は何m^2ですか?", "answer": area_log, "explanation": f"{log_to_prefixed_string(area_log)}m^2なので、{area_log:.2f}となります。"})
+        quiz_list.append({"question": f"{name}は何m^2ですか?", "answer": area_log, "explanation": f"約{log_to_prefixed_string(area_log)}m^2なので、{area_log:.2f}となります。"})
 
 
 # 辞書のリストをJSONファイルに保存
