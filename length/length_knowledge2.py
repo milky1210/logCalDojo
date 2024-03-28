@@ -32,12 +32,31 @@ length = {
     "太陽までの距離": 14960 * 10000 * 1000,
     "カーマンラインの高度(宇宙までの距離)": 100 * 1000,
 }
-
+def log_to_prefixed_string(val, mode=0):
+    # 大きな値の接頭語
+    prefixes_big = {
+        19: '京k',
+        15: '兆k',
+        11: '億k',
+        7: '万k',
+        3: 'k',
+        0: ''
+    }
+    for exp, prefix in prefixes_big.items():
+        if val >= exp:
+            number = 10**(val - exp)
+            if number<10:
+                return f"{number:.2g}{prefix}"
+            else:
+                return f"{int(number)}{prefix}"
+    return f"{int(10**(val - exp))}"
 # クイズデータのリスト
 quizzes = []
 for key in length.keys():
+    answer = math.log10(length[key])
     quiz = {"question": f"{key}は何mですか？",
-            "answer": math.log10(length[key])}
+            "answer": answer,
+            "explanation": f"{key}は{log_to_prefixed_string(answer)}mです。"}
     quizzes.append(quiz)
 
 # JSONファイルに保存
